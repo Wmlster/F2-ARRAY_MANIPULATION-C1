@@ -3,21 +3,31 @@ let data = [
   { name: "jane", age: 27, profession: "admin" },
 ];
 
+function callme_data() {
+  data.forEach((element) => {
+    console.log(element);
+  });
+}
+
 // 1. Print Developers
 function printDeveloper() {
+  console.log("Print Developers");
+
   let print_data = function (element) {
-    console.log(element);
+    if (element.profession == "developer") {
+      console.log(element);
+    }
   };
 
   data.forEach(print_data);
-
-  alert("Traversing Successful");
 }
 
 // 2. Add Data
 function addData() {
+  console.log("Add Data");
+
   let name = prompt("Enter name");
-  let age = prompt("Rnter age");
+  let age = prompt("Enter age");
   age = parseInt(age);
   let profession = prompt("Enter profession");
 
@@ -29,11 +39,13 @@ function addData() {
 
   data.push(obj);
 
-  alert("Data is added successfully");
+  callme_data();
 }
 
 // 3. Remove Admins
 function removeAdmin() {
+  console.log("Remove Admins");
+
   let remove_admin = function (element, index) {
     if (element.profession == "admin") {
       data.splice(index, 1);
@@ -42,11 +54,13 @@ function removeAdmin() {
 
   data.forEach(remove_admin);
 
-  alert("All Admins are successfully removed");
+  callme_data();
 }
 
 // 4. Concatenate Array
 function concatenateArray() {
+  console.log("Concatenate Array");
+
   let dummy_data = [
     { name: "john", age: 24, profession: "developer" },
     { name: "jane", age: 27, profession: "admin" },
@@ -62,23 +76,24 @@ function concatenateArray() {
   result.forEach(function (element) {
     console.log(element);
   });
-
-  alert("Concatination Done");
 }
 
 // 5. Average Age
 function averageAge() {
-  let average_age = data.reduce(function (prev, element) {
-    return prev.age + element.age;
+  console.log("Average Age");
+
+  let sum = 0;
+  data.forEach(function (element) {
+    sum += element.age;
   });
 
-  console.log(average_age / data.length);
-
-  alert("Calculation Done");
+  console.log("Average age:", sum / data.length);
 }
 
 // 6. Age Check
 function checkAgeAbove25() {
+  console.log("Age Check");
+
   let check_age = data.filter(function (element) {
     if (element.age > 25) {
       return true;
@@ -86,16 +101,16 @@ function checkAgeAbove25() {
   });
 
   if (check_age.length >= 1) {
-    console.log(true);
+    console.log("Result:", true);
   } else {
-    console.log(false);
+    console.log("Result:", false);
   }
-
-  alert("check Age Above 25 is Done");
 }
 
 // 7. Unique Professions
 function uniqueProfessions() {
+  console.log("Unique Professions");
+
   let unique_arr = [];
 
   data.forEach((element) => {
@@ -105,12 +120,12 @@ function uniqueProfessions() {
   });
 
   console.log(unique_arr);
-
-  alert("Unique profession Done");
 }
 
 // 8. Sort by Age
 function sortByAge() {
+  console.log("Sort by Age");
+
   let ascending = (a, b) => {
     if (a.age > b.age) return a.age - b.age;
     return a.age - b.age;
@@ -118,24 +133,26 @@ function sortByAge() {
 
   data.sort(ascending);
 
-  console.log(data);
-
-  alert("Sorting is done");
+  callme_data();
 }
 
 // 9. Update Profession
 function updateJohnsProfession() {
+  console.log("Update Profession");
+
   data.forEach((element) => {
     if (element.name == "john") {
       element.profession = "manager";
     }
   });
 
-  alert("Update Successful");
+  callme_data();
 }
 
 // 10. Profession Count
 function getTotalProfessions() {
+  console.log("Profession Count");
+
   let developers_count = 0;
   let admins_count = 0;
 
@@ -147,8 +164,7 @@ function getTotalProfessions() {
     }
   });
 
+  callme_data();
   console.log("Admin Count:", admins_count);
   console.log("Developer Count:", developers_count);
-
-  alert("Counting Successfull");
 }
