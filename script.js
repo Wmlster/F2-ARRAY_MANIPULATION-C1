@@ -159,7 +159,7 @@ function getTotalProfessions() {
   data.forEach((element) => {
     if (element.profession == "developer") {
       ++developers_count;
-    } else {
+    } else if (element.profession == "admin") {
       ++admins_count;
     }
   });
